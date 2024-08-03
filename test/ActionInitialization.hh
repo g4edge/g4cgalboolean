@@ -22,17 +22,12 @@
 // * use  in  resulting  scientific  publications,  and indicate your *
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
-//
-//
-/// \file G01ActionInitialization.hh
-/// \brief Definition of the G01ActionInitialization class
 
 #ifndef ActionInitialization_h
 #define ActionInitialization_h 1
 
 #include "G4VUserActionInitialization.hh"
 
-/// Action initialization class.
 
 class ActionInitialization : public G4VUserActionInitialization
 {
@@ -43,7 +38,5 @@ class ActionInitialization : public G4VUserActionInitialization
     virtual void BuildForMaster() const;
     virtual void Build() const;
 };
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 #endif

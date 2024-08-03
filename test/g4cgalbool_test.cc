@@ -22,17 +22,6 @@
 // * use  in  resulting  scientific  publications,  and indicate your *
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
-//
-/// \file persistency/gdml/G01/load_gdml.cc
-/// \brief Main program of the persistency/gdml/G01 example
-//
-//
-//
-//
-// --------------------------------------------------------------
-//      GEANT 4 - load_gdml
-//
-// --------------------------------------------------------------
 
 #include "G4BooleanProcessorCGAL.hh"
 #include "G4BooleanSolid.hh"

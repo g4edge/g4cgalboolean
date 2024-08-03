@@ -22,13 +22,6 @@
 // * use  in  resulting  scientific  publications,  and indicate your *
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
-//
-/// \file persistency/gdml/G01/include/G01DetectorConstruction.hh
-/// \brief Definition of the G01DetectorConstruction class
-//
-//
-//
-//
 
 #ifndef _DETECTORCONSTRUCTION_H_
 #define _DETECTORCONSTRUCTION_H_

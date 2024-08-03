@@ -22,13 +22,6 @@
 // * use  in  resulting  scientific  publications,  and indicate your *
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
-//
-/// \file persistency/gdml/G01/src/G01PrimaryGeneratorAction.cc
-/// \brief Implementation of the G01PrimaryGeneratorAction class
-//
-//
-//
-//
 
 #include "PrimaryGeneratorAction.hh"
 
@@ -38,7 +31,6 @@
 #include "G4ParticleTable.hh"
 #include "G4SystemOfUnits.hh"
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 PrimaryGeneratorAction::PrimaryGeneratorAction()
   : G4VUserPrimaryGeneratorAction(), fParticleGun(0)
@@ -52,14 +44,10 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   fParticleGun->SetParticleEnergy(10 * GeV);
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
 {
   delete fParticleGun;
 }
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
