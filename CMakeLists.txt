@@ -41,3 +41,8 @@ add_library(g4cgalboolean SHARED ${CGALLibSources} ${CGALLibHeaders})
 target_compile_options(g4cgalboolean PRIVATE -Werror )
 target_link_libraries(g4cgalboolean ${Geant4_LIBRARIES} CGAL::CGAL Eigen3::Eigen)
 
+file(GLOB TestSources ${PROJECT_SOURCE_DIR}/test/*cc)
+file(GLOB TestHeaders ${PROJECT_SOURCE_DIR}/test/*hh)
+add_executable(g4cgalbool_test ${TestSources} ${TestHeaders})
+target_compile_options(g4cgalbool_test PRIVATE -Werror)
+target_link_libraries(g4cgalbool_test ${Geant4_LIBRARIES} CGAL::CGAL g4cgalboolean)
