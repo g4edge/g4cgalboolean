@@ -28,6 +28,9 @@ int main(int argc, char** argv) {
   ...
 ```
 
+[!NOTE]
+The external processor interface in only available in Geant4 11.2.0 and	later
+
 ### Using g4cgalboolean in your project
 1. Copy the `src` and `include` code over to your geant4 application (`G4BooleanProcessorCGAL`, `G4SurfaceMeshCGAL` and `G4VSurfaceMesh`)
 1. Install CGAL using your package manager 
