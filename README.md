@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
   ...
 ```
 
-[!NOTE]
+**NOTE**
 The external processor interface in only available in Geant4 11.2.0 and	later
 
 ### Using g4cgalboolean in your project
