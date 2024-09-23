@@ -1,7 +1,3 @@
----
-layout: page
----
-
 # G4cgalboolean
 
 ### Introduction
