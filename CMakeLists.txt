@@ -46,3 +46,6 @@ file(GLOB TestHeaders ${PROJECT_SOURCE_DIR}/test/*hh)
 add_executable(g4cgalbool_test ${TestSources} ${TestHeaders})
 target_compile_options(g4cgalbool_test PRIVATE -Werror)
 target_link_libraries(g4cgalbool_test ${Geant4_LIBRARIES} CGAL::CGAL g4cgalboolean)
+
+install(TARGETS g4cgalboolean)
+install(FILES ${CGALLibHeaders} DESTINATION include)
