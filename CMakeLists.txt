@@ -47,5 +47,25 @@ add_executable(g4cgalbool_test ${TestSources} ${TestHeaders})
 target_compile_options(g4cgalbool_test PRIVATE -Werror)
 target_link_libraries(g4cgalbool_test ${Geant4_LIBRARIES} CGAL::CGAL g4cgalboolean)
 
+
+include(CMakePackageConfigHelpers)
+set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR}
+        CACHE PATH "Location of header files" )
+set(LIBRARY_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}
+        CACHE PATH "Location of library files" )
+set(SYSCONFIG_INSTALL_DIR ${CMAKE_INSTALL_SYSCONFDIR}
+        CACHE PATH "Location of configuration files" )
+configure_package_config_file(cmake/geant4cgalboolean.cmake.in
+        ${CMAKE_CURRENT_BINARY_DIR}/geant4cgalboolean.cmake
+        INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/geant4cgalboolean
+        PATH_VARS INCLUDE_INSTALL_DIR SYSCONFIG_INSTALL_DIR LIBRARY_INSTALL_DIR)
+write_basic_package_version_file(
+        ${CMAKE_CURRENT_BINARY_DIR}/geant4cgalbooleanVersion.cmake
+        VERSION 1.0
+        COMPATIBILITY SameMajorVersion )
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/geant4cgalboolean.cmake
+        ${CMAKE_CURRENT_BINARY_DIR}/geant4cgalbooleanVersion.cmake
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/geant4cgalboolean)
+
 install(TARGETS g4cgalboolean)
 install(FILES ${CGALLibHeaders} DESTINATION include)
