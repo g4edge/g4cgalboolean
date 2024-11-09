@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------------
 # Setup the project
 cmake_minimum_required(VERSION 3.16...3.21)
-project(geant4cgalboolean)
+project(geant4cgalboolean VERSION 1.0.0)
 
 #----------------------------------------------------------------------------
 # Find Geant4 package, activating all available Vis drivers by default
@@ -48,24 +48,33 @@ target_compile_options(g4cgalbool_test PRIVATE -Werror)
 target_link_libraries(g4cgalbool_test ${Geant4_LIBRARIES} CGAL::CGAL g4cgalboolean)
 
 
-include(CMakePackageConfigHelpers)
-set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR}
-        CACHE PATH "Location of header files" )
-set(LIBRARY_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}
-        CACHE PATH "Location of library files" )
-set(SYSCONFIG_INSTALL_DIR ${CMAKE_INSTALL_SYSCONFDIR}
-        CACHE PATH "Location of configuration files" )
-configure_package_config_file(cmake/geant4cgalboolean.cmake.in
-        ${CMAKE_CURRENT_BINARY_DIR}/geant4cgalboolean.cmake
-        INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/geant4cgalboolean
-        PATH_VARS INCLUDE_INSTALL_DIR SYSCONFIG_INSTALL_DIR LIBRARY_INSTALL_DIR)
-write_basic_package_version_file(
-        ${CMAKE_CURRENT_BINARY_DIR}/geant4cgalbooleanVersion.cmake
-        VERSION 1.0
-        COMPATIBILITY SameMajorVersion )
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/geant4cgalboolean.cmake
-        ${CMAKE_CURRENT_BINARY_DIR}/geant4cgalbooleanVersion.cmake
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/geant4cgalboolean)
+install(TARGETS g4cgalboolean
+        EXPORT geant4cgalbooleanTargets
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-install(TARGETS g4cgalboolean)
 install(FILES ${CGALLibHeaders} DESTINATION include)
+
+
+include(CMakePackageConfigHelpers)
+
+write_basic_package_version_file(
+        "geant4cgalbooleanConfigVersion.cmake"
+        VERSION ${PROJECT_VERSION}
+        COMPATIBILITY SameMajorVersion
+)
+
+configure_package_config_file(
+        "${CMAKE_CURRENT_LIST_DIR}/cmake/geant4cgalboolean.cmake.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/geant4cgalbooleanConfig.cmake"
+        INSTALL_DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/cmake/geant4cgalboolean
+)
+
+install(
+        EXPORT geant4cgalbooleanTargets
+        FILE geant4cgalbooleanTargets.cmake
+        NAMESPACE geant4cgalboolean::
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/cmake/geant4cgalboolean
+)
