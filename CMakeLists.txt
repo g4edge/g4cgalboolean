@@ -39,8 +39,7 @@ file(GLOB CGALLibSources ${PROJECT_SOURCE_DIR}/src/*cc)
 file(GLOB CGALLibHeaders ${PROJECT_SOURCE_DIR}/include/*.hh)
 add_library(g4cgalboolean SHARED ${CGALLibSources} ${CGALLibHeaders})
 target_compile_options(g4cgalboolean PRIVATE -Werror )
-target_link_libraries(g4cgalboolean PRIVATE ${Geant4_LIBRARIES} CGAL::CGAL Eigen3::Eigen)
-# target_include_directories(g4cgalboolean INTERFACE ${PROJECT_SOURCE_DIR}/include )
+target_link_libraries(g4cgalboolean  ${Geant4_LIBRARIES} CGAL::CGAL Eigen3::Eigen)
 
 file(GLOB TestSources ${PROJECT_SOURCE_DIR}/test/*cc)
 file(GLOB TestHeaders ${PROJECT_SOURCE_DIR}/test/*hh)
@@ -56,7 +55,7 @@ install(TARGETS g4cgalboolean
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-install(FILES ${CGALLibHeaders} DESTINATION include)
+install(FILES ${CGALLibHeaders} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 
 include(CMakePackageConfigHelpers)
